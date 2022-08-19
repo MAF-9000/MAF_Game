@@ -8,12 +8,11 @@ namespace LordOfTheRings.Locations
     {
         private IRace _player;
         private Location[] locations;
-        private string[] locationsNames = { "Темный лес", "Древний замок", "Пещера смерти", "Таинственное озеро", "Заброшенная изба", "Ущелье боли", "Долина единорогов", };
-        private string[] humansNames = { "Вася", "Арагорн", "Принц Чаминг", "Тормунд Черный", "Одноглазый Джек", "Оби-Ван Кеноби", "Кратос" };
-        private string[] orcsNames = { "Ебака", "Шрек", "Азог Осквернитель", "Углук Ебакович", "Манрок Охотник", "Болдог", "Оркобал" };
-        private string[] elfsNames = { "Леголас", "Йорвет", "Изенгрим", "Элронд", "Элихаль", "Эредин", "Трандуил и лось Алёша" };
+        private string[] humansNames = { "Григор", "Маркон", "Арвин", "Тормунд", "Джек", "Дарден", "Ханк" };
+        private string[] orcsNames = { "Лотарум", "Тарзозог", "Азог", "Углук", "Манрок", "Болдог", "Ротаркус" };
+        private string[] elfsNames = { "Морниран", "Илридент", "Колориун", "", "Элихаль", "Бранэлхилл", "Гофинмон" };
         private string[] monstersNames = { "Шкилет", "Дракон", "Мертвец", "Медведь", "Троль", "Кентавр", "Джин", "Василиск", "Некромант", "Грифон", "Снежный человек", "Циклоп", "Заяц" };
-        private string[] monstersAlias = { "Вонючий", "Кровавый", "Смердящий", "Одноногий", "Быстрый", "Медленный", "Смертопоносный", "Пухлый", "в бурундучем помёте", "Милый", "Смертоносный", "Повелитель душ" };
+        private string[] monstersAlias = { "Вонючий", "Кровавый", "Смердящий", "Одноногий", "Быстрый", "Медленный", "Смертоносный", "Пухлый", "в бурундучем помёте", "Милый", "Смертоносный", "Повелитель душ" };
 
 
         public string Name
@@ -133,7 +132,7 @@ namespace LordOfTheRings.Locations
                 index1 = r.Next(0, 999) % words.Length;
                 wordTree = words[index1];
 
-            } while (isDuplicateName(locationName) || isDuplicateName(podl.Substring(0, podl.Length-2)));
+            } while (isDuplicateName(locationName) || isDuplicateName(podl.Substring(0, podl.Length - 2)));
             return $"{podl} {locationName} {wordTree}";
         }
 
@@ -152,7 +151,7 @@ namespace LordOfTheRings.Locations
             {
                 return 2;
             }
-            if (word.EndsWith("а")|| word.EndsWith("ь")|| word.EndsWith("я"))
+            if (word.EndsWith("а") || word.EndsWith("ь") || word.EndsWith("я"))
             {
                 return 1;
             }
@@ -166,21 +165,22 @@ namespace LordOfTheRings.Locations
             Creature result = null;
             var index = r.Next(0, humansNames.Length - 1);
             var levelEnemy = GetEnemyLevel();
+            var indexAlias = r.Next(0, monstersAlias.Length - 1);
             switch (i % 6)
             {
                 case 0:
                     {
-                        result = new Human(humansNames[index], levelEnemy);
+                        result = new Human($"{humansNames[index]} { monstersAlias[indexAlias] }", levelEnemy);
                     }
                     break;
                 case 1:
                     {
-                        result = new Elf(elfsNames[index], levelEnemy);
+                        result = new Elf($"{elfsNames[index]} { monstersAlias[indexAlias] }", levelEnemy);
                     }
                     break;
                 case 2:
                     {
-                        result = new Orc(orcsNames[index], levelEnemy);
+                        result = new Orc($"{orcsNames[index]} { monstersAlias[indexAlias] }", levelEnemy);
                     }
                     break;
                 case 3:
@@ -188,7 +188,6 @@ namespace LordOfTheRings.Locations
                 case 5:
                     {
                         var indexNameMon = r.Next(0, monstersNames.Length - 1);
-                        var indexAlias = r.Next(0, monstersAlias.Length - 1);
                         result = new Monster($" {monstersNames[indexNameMon]} {monstersAlias[indexAlias]}", levelEnemy);
                     }
 

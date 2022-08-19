@@ -9,3 +9,4 @@
 /.vs
 /GameInterface/bin/Debug/net6.0-windows7.0
 /GameInterface/GameInterface.csproj.user
+/GameInterface/obj
