@@ -9,30 +9,7 @@ namespace LordOfTheRings.Locations
         private IRace _player;
         private Location[] locations;
         private string[] locationsNames = { "Темный лес", "Древний замок", "Пещера смерти", "Таинственное озеро", "Заброшенная изба", "Ущелье боли", "Долина единорогов", };
-        private string[] humansNames = { "Вася", "Арагорн", "Принц Чаминг", "Тормунд Черный", "Одноглазый Джек", "Оби-Ван Кеноби", "Кратос" };
-        private string[] orcsNames = { "Ебака", "Шрек", "Азог Осквернитель", "Углук Ебакович", "Манрок Охотник", "Болдог", "Оркобал" };
-        private string[] elfsNames = { "Леголас", "Йорвет", "Изенгрим", "Элронд", "Элихаль", "Эредин", "Трандуил и лось Алёша" };
-        private string[] monstersNames = { "Шкилет", "Дракон", "Мертвец", "Медведь", "Троль", "Кентавр", "Джин", "Василиск", "Некромант", "Грифон", "Снежный человек", "Циклоп", "Заяц" };
-        private string[] monstersAlias = { "Вонючий", "Кровавый", "Смердящий", "Одноногий", "Быстрый", "Медленный", "Смертопоносный", "Пухлый", "в бурундучем помёте", "Милый", "Смертоносный", "Повелитель душ" };
-
-
-        public string Name
-        { get; private set; }
-
-        public Tract()
-        {
-            Name = "Тракт";
-            locations = new Location[3];
-        }
-
-        private async Task TractMenu()
-        {
-            string comand = string.Empty;
-            while (_player.IsAlive && _player.Level < 10)
-            {
-                Cnsl.WriteAction($"1 - Пойти в локацию {locations[0].Name} ");
-                Cnsl.WriteAction($"2 - Пойти в локацию {locations[1].Name} ");
-                Cnsl.WriteAction($"3 - Пойти в локацию {locations[2].Name} ");
+        private string[] humansNames = {
                 Cnsl.WriteAction("4 - Посмотреть инвентарь");
                 Cnsl.WriteAction($"5 - Посмотреть арактеристики {_player.Name} ");
                 Cnsl.WriteAction("6 - Пойти дальше");
