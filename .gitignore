@@ -1,0 +1,11 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/LordOfTheRings/DesignTimeBuild/.dtbcache.v2
+/.vs/LordOfTheRings/v17/.futdcache.v1
+/.vs/LordOfTheRings/v17
+/.vs/LotR/v17
+/.vs
+/GameInterface/bin/Debug/net6.0-windows7.0
+/GameInterface/GameInterface.csproj.user
