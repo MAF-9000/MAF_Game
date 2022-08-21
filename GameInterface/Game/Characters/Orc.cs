@@ -1,8 +1,7 @@
 ﻿namespace LordOfTheRings.Characters
 {
     public class Orc : Race
-    {
-        public static string raceName = "Орк";
+    {// Получают и наносят на 20 % больше урона
 
         public Orc(string name = "Неизвестный", int level = 1)
             : base(name, level)
@@ -13,7 +12,20 @@
             _health = r.Next(110, 130);
             _raceName = "Орк";
         }
-      
+
+        public override int Attack
+        {
+            get
+            {
+                return base.Attack * 14 / 10;
+                  
+            }
+        }
+
+        public override void GetDamage(int damage)
+        {
+            base.GetDamage((int)(damage*1.2));
+        }
 
     }
 }

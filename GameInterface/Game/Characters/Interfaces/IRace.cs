@@ -1,12 +1,7 @@
 ﻿using GameInterface.Game.Characters.Interfaces;
-using LordOfTheRings.Armors;
+using GameInterface.Game.Items.Armors;
+using GameInterface.Game.Items.Weapons;
 using LordOfTheRings.Items;
-using LordOfTheRings.Weapons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameInterface.Game.Characters
 {
@@ -15,8 +10,10 @@ namespace GameInterface.Game.Characters
         public string RaceName { get; }
         public int Attack { get; }
         public int Protection { get; }
-        public Weapon Weapon { get; set; }
-        public Armor Armor { get; set; }
+        public IWeapon Weapon { get; set; }
+        public IArmor Armor { get; set; }
+        public IShield Shield { get; set; }
+        public IHelmet Helmet { get; set; }
         public Inventary Inventary { get; }
         public int Experience { get; }
         public int ExperienceLimit { get; }

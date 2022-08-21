@@ -14,6 +14,11 @@
             _health = r.Next(90, 110);
             _raceName = "Человек";
         }
-       
+
+        public override void Heal(int healDamage)
+        {
+            base.Heal((int)(healDamage * 1.4));
+        }
+
     }
 }

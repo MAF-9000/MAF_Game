@@ -4,7 +4,6 @@ namespace LordOfTheRings.Characters
 {
     public class Elf : Race
     {
-        public static string raceName = "Эльф";
         private int _agility;//перевод ловкость
 
 

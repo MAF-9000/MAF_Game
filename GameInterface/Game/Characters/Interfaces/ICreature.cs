@@ -1,11 +1,4 @@
-﻿using LordOfTheRings.Characters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameInterface.Game.Characters.Interfaces
+﻿namespace GameInterface.Game.Characters.Interfaces
 {
     public interface ICreature
     {

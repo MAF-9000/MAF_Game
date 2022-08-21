@@ -1,6 +1,4 @@
-﻿using GameInterface.Game.Characters.Interfaces;
-
-namespace LordOfTheRings.Characters
+﻿namespace LordOfTheRings.Characters
 {
     internal class Monster : Creature
     {

@@ -1,6 +1,6 @@
 ﻿using GameInterface.Game;
 using GameInterface.Game.Characters;
-using LordOfTheRings.Characters;
+using GameInterface.Game.Items;
 
 namespace LordOfTheRings.Items
 {
@@ -24,6 +24,8 @@ namespace LordOfTheRings.Items
         public bool Disposable { get; private set; }
 
         public int Cost { get; private set; }
+
+        public ItemRank Rank { get; private set; }
 
         public void Execute(IRace person)
         {

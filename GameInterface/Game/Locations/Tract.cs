@@ -56,7 +56,7 @@ namespace LordOfTheRings.Locations
                         break;
                     case "4":
                         {
-                            _player.Inventary.InventaryMenu(_player);
+                            await _player.Inventary.InventaryMenu(_player);
                         }
                         break;
                     case "5":

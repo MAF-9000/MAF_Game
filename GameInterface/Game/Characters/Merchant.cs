@@ -54,9 +54,8 @@ namespace LordOfTheRings.Characters
                 }
             }
             while (comand != "4");
-
-
         }
+
         private async Task ShoppingMenu(IRace person)
         {
             string comand = string.Empty;

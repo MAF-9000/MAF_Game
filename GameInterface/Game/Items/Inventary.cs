@@ -21,7 +21,7 @@ namespace LordOfTheRings.Items
         public void AddGold(int gold)
         {
             Gold = Gold + gold;
-        
+
         }
 
         public void AddItem(IItem item)
@@ -31,7 +31,7 @@ namespace LordOfTheRings.Items
 
         public bool TryToBuyItem(IItem item)
         {
-           if(Gold>=item.Cost)
+            if (Gold >= item.Cost)
             {
                 Gold = Gold - item.Cost;
                 Cnsl.WriteLine($"Вы купили товар {item.Name} за цену {item.Cost}, у Вас осталось денег - {Gold}");
@@ -43,7 +43,7 @@ namespace LordOfTheRings.Items
                 Cnsl.WriteLine($"Вы не можете купить товар {item.Name} за цену {item.Cost}, у Вас осталось денег - {Gold}");
             }
             return false;
-           
+
             // попытка купить товар если хватает денег
         }
         public void SaleItem(IItem item)
@@ -53,30 +53,32 @@ namespace LordOfTheRings.Items
         }
 
 
-        public async void InventaryMenu(IRace person)
+        public async Task InventaryMenu(IRace person)
         {
-
-            int count = 1;
-            Cnsl.WriteLine("Список предметов:");
-            Cnsl.WriteLine($"Количество золота - {Gold}");
-            foreach (IItem item in Items)
-            {
-                Cnsl.Write($"{count}. ");
-                item.ItemState();
-                count++;
-            }
 
             string comand = string.Empty;
             do
             {
-                Cnsl.WriteLine($"1 - {Items.Count}  - Использовать предмет № ");
-                Cnsl.WriteLine("b - Выход");
+                Cnsl.WriteLine($"Количество золота - {Gold}");
+                Cnsl.WriteLine("Список предметов:");
+                int count = 1;
+                foreach (IItem item in Items)
+                {
+                    Cnsl.Write($"{count}. ");
+                    item.ItemState();
+                    count++;
+                }
+                for (int i = 0; i < Items.Count; i++)
+                {
+                    Cnsl.WriteAction($"{i + 1} - Использовать {Items[i].Name}");
+                }
+                Cnsl.WriteAction("b - Выход");
                 comand = await Cnsl.ReadLine();
                 int comandNum = 0;
-                if(int.TryParse(comand, out comandNum)&&comandNum<= Items.Count)
+                if (int.TryParse(comand, out comandNum) && comandNum <= Items.Count)
                 {
                     Items[comandNum - 1].Execute(person);
-                    if (Items[comandNum - 1].Disposable )
+                    if (Items[comandNum - 1].Disposable)
                     {
                         Items.Remove(Items[comandNum - 1]);
                     }

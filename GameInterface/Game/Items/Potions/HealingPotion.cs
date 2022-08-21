@@ -1,6 +1,6 @@
 ﻿using GameInterface.Game;
 using GameInterface.Game.Characters;
-using LordOfTheRings.Characters;
+using GameInterface.Game.Items;
 using LordOfTheRings.Items;
 
 namespace LordOfTheRings.Potions
@@ -19,33 +19,35 @@ namespace LordOfTheRings.Potions
 
         public int Cost { get; private set; }
 
-        public HealingPotion(HealingPotionType potionType)
+        public ItemRank Rank { get; private set; }
+
+        public HealingPotion(ItemRank potionType)
         {
             Name = "зелье исцеления";
             switch (potionType)
             {
-                case HealingPotionType.Ordinary:
+                case ItemRank.Ordinary:
                     {
                         Heal = 10;
                         Name = "Обычное " + Name;
                         Cost = 25;
                     }
                     break;
-                case HealingPotionType.Rare:
+                case ItemRank.Rare:
                     {
                         Heal = 25;
                         Name = "Редкое " + Name;
                         Cost = 50;
                     }
                     break;
-                case HealingPotionType.Epic:
+                case ItemRank.Epic:
                     {
                         Heal = 50;
                         Name = "Эпическое " + Name;
                         Cost = 100;
                     }
                     break;
-                case HealingPotionType.Legendary:
+                case ItemRank.Legendary:
                     {
                         Heal = 100;
                         Name = "Легендарное " + Name;
@@ -73,7 +75,7 @@ namespace LordOfTheRings.Potions
         {
             Random random = new Random();
             var type = random.Next(0, 99);
-            HealingPotionType potionType = (HealingPotionType)(type % 4);
+            ItemRank potionType = (ItemRank)(type % 4);
             return new HealingPotion(potionType);
         }
     }

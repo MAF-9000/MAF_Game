@@ -86,7 +86,7 @@ namespace GameInterface
                 Cnsl.WriteAction("1 - Человек");
                 Cnsl.WriteAction("2 - Орк");
                 Cnsl.WriteAction("3 - Эльф");
-                Cnsl.WriteAction("4 - Хафлинг");
+                Cnsl.WriteAction("4 - Гном");
 
                 comand = await Cnsl.ReadLine();
             }
@@ -115,7 +115,7 @@ namespace GameInterface
                     break;
                 case "4":
                     {
-                        hero = new Hafling(Name);
+                        hero = new Dwarf(Name);
                     }
                     break;
 

@@ -1,12 +1,8 @@
-﻿using GameInterface.Game;
-using GameInterface.Game.Characters;
-using GameInterface.Game.Items;
-using GameInterface.Game.Items.Armors;
-using LordOfTheRings.Items;
+﻿using GameInterface.Game.Characters;
 
-namespace LordOfTheRings.Armors
+namespace GameInterface.Game.Items.Armors
 {
-    public class Armor : IArmor
+    internal class Helmet : IHelmet
     {
         public string Name { get; private set; }
 
@@ -18,7 +14,7 @@ namespace LordOfTheRings.Armors
 
         public ItemRank Rank { get; private set; }
 
-        public Armor()
+        public Helmet()
         {
             Rank = ItemRank.Ordinary;
             Protection = 0;
@@ -26,7 +22,7 @@ namespace LordOfTheRings.Armors
             Name = string.Empty;
         }
 
-        public Armor(ItemRank rank)
+        public Helmet(ItemRank rank)
         {
             Rank = rank;
             Protection = 5;
@@ -35,52 +31,46 @@ namespace LordOfTheRings.Armors
             {
                 case ItemRank.Ordinary:
                     {
-                        Name = "Рубаха из соломы";
+                        Name = "Шапка из бобра";
                     }
                     break;
                 case ItemRank.Rare:
                     {
                         Protection *= 2;
                         Cost *= 2;
-                        Name = "Стеганый дуплет";
+                        Name = "Кожаный шлем";
                     }
                     break;
                 case ItemRank.Epic:
                     {
-                        Protection *= 4;
-                        Cost *= 4;
-                        Name = "Кольчуга";
+                        Protection *= 6;
+                        Cost *= 6;
+                        Name = "Стильный шлем";
                     }
                     break;
                 case ItemRank.Legendary:
                     {
-                        Protection *= 8;
-                        Cost *= 8;
-                        Name = "Золотой латный доспех ";
+                        Protection *= 10;
+                        Cost *= 9;
+                        Name = "Прочный гномий шлем";
                     }
                     break;
             }
             Disposable = false;
         }
-        public static IItem CreateRandom()
-        {
-            Random random = new Random();
-            var type = random.Next(0, 99);
-            ItemRank armorType = (ItemRank)(type % 3);
-            return new Armor(armorType);
-        }
 
         public void Execute(IRace person)
         {
-            person.Armor = this;
+            person.Helmet = this;
         }
+
         public void ItemState()
         {
-            Cnsl.WriteLine($"Броня: {Name} с защитой - {Protection}, цена предмета - {Cost} ");
+            Cnsl.WriteLine($"Шлем: {Name} с защитой - {Protection}, цена предмета - {Cost} ");
         }
         public string ItemInfo()
         {
             return $"{Name}, защита({Protection}), цена({Cost})";
         }
-    }  
+    }
 }

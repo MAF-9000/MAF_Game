@@ -1,6 +1,5 @@
-﻿using GameInterface;
+﻿using GameInterface.Game.Characters;
 using LordOfTheRings.Characters;
-using LordOfTheRings.Locations;
 
 namespace LordOfTheRings
 {
@@ -16,7 +15,7 @@ namespace LordOfTheRings
             //tract.GoToTract(hero);
         }
 
-        public static Race CreatePerson()
+        public static IRace CreatePerson()
         {
             string comand = string.Empty;
             do

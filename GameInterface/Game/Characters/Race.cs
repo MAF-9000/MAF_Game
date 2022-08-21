@@ -1,13 +1,9 @@
 ﻿using GameInterface.Game;
 using GameInterface.Game.Characters;
+using GameInterface.Game.Items.Armors;
+using GameInterface.Game.Items.Weapons;
 using LordOfTheRings.Armors;
 using LordOfTheRings.Items;
-using LordOfTheRings.Weapons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LordOfTheRings.Characters
 {
@@ -16,8 +12,10 @@ namespace LordOfTheRings.Characters
         // Поля класса----------------------------------
        
         protected string _raceName;
-        protected Weapon _weapon;
-        protected Armor _armor;
+        protected IWeapon _weapon;
+        protected IArmor _armor;
+        protected IHelmet _helmet;
+        protected IShield _shield;
         protected int _experienceLimit;
 
         // Свойства-------------------------------------
@@ -44,7 +42,7 @@ namespace LordOfTheRings.Characters
             }
         }
 
-        public Weapon Weapon
+        public IWeapon Weapon
         {
             get
             {
@@ -56,18 +54,7 @@ namespace LordOfTheRings.Characters
                 Cnsl.WriteLine($"{Name} взял оружие {value.Name} в руку ");
             }
         }
-        public Armor Armor
-        {
-            get
-            {
-                return _armor;
-            }
-            set
-            {
-                _armor = value;
-                Cnsl.WriteLine($"{Name} надел  броню {value.Name} ");
-            }
-        }
+       
         public Inventary Inventary
         {
             get; private set;
@@ -90,19 +77,55 @@ namespace LordOfTheRings.Characters
 
         }
 
+        public IArmor Armor {
+            get
+            {
+                return _armor;
+            }
+            set
+            {
+                _armor = value;
+                Cnsl.WriteLine($"{Name} надел {value.Name} ");
+            }
+        }
+        public IShield Shield {
+            get
+            {
+                return _shield;
+            }
+            set
+            {
+                _shield = value;
+                Cnsl.WriteLine($"{Name} взял {value.Name} ");
+            }
+        }
+        public IHelmet Helmet {
+            get
+            {
+                return _helmet;
+            }
+            set
+            {
+                _helmet = value;
+                Cnsl.WriteLine($"{Name} надел {value.Name} ");
+            }
+        }
+
         // Конструктор-----------------------------------------
         public Race(string name = "Неизвестный", int level = 1)
             :base(name, level)
         {
-            _weapon = new Weapon(WeaponType.Empty);
-            _armor = new Armor(ArmorType.Empty);
+            _weapon = new Sword();
+            _armor = new Armor();
+            _shield = new Shield();
+            _helmet = new Helmet();
             Inventary = new Inventary();
             Inventary.AddGold(50);
             ExperienceLimit = 100;
         }
         // Методы----------------------------------------------
        
-        public void Heal(int healDamage)
+        public virtual void Heal(int healDamage)
         {
             if (IsAlive)
             {
