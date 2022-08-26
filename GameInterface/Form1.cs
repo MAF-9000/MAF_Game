@@ -75,6 +75,43 @@ namespace GameInterface
             hero.CharacterState();
             Tract tract = new Tract();
             tract.GoToTract(hero);
+            ClearHystory();
+            MainMenu();
+        }
+
+        public async void MainMenu()
+        {
+            string comand = string.Empty;
+            do
+            {
+                Cnsl.WriteLine("ГЛАВНОЕ МЕНЮ");
+
+                Cnsl.WriteAction("1 - Начать новую игру");
+                Cnsl.WriteAction("2 - Загрузить игру");
+                Cnsl.WriteAction("3 - Выход");
+
+                comand = await Cnsl.ReadLine();
+            }
+            while ((comand != "1" && comand != "2" && comand != "3"));
+             switch (comand)
+            {
+                case "1":
+                    {
+                        Start();
+                    }
+                    break;
+                case "2":
+                    {
+
+                    }
+                    break;
+                case "3":
+                    {
+                        Close();
+                    }
+                    break;
+
+            }
         }
 
         public async Task<IRace> CreatePerson()
@@ -126,7 +163,7 @@ namespace GameInterface
         private void GameI_Shown(object sender, EventArgs e)
         {
             Cnsl.init(this);
-            Start();
+            MainMenu();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

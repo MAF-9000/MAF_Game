@@ -162,6 +162,8 @@ namespace LordOfTheRings.Characters
                 Cnsl.WriteLine($"Текущий опыт {Name} = {Experience}XP/{ExperienceLimit}XP");
             }
         }
+        //можно сделать сущность временного эффекта, который живет 1-Н боев и оказывает влияние на игрока. Например - эффект повышенного на 20проц урона на 3 боя
+        // 1 бой проходит и счетчик уменьшается до 2х
     }
     public enum RaceType
     {
